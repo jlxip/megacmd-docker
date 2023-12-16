@@ -16,10 +16,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push Docker image
-        uses: docker/build-push-action@v3
+        uses: jlxip/docker-semver@1.0.0
         with:
           context: .
-          push: true
-          tags: |
-            jlxip/megacmd:latest
-            jlxip/megacmd:${{ github.ref_name }}
+          image: jlxip/megacmd
+          version: ${{ github.ref_name }}
